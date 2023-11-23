@@ -1,0 +1,167 @@
+import random
+import time
+H = False
+S = False
+endh = False
+fu = False
+dealerblackjack = False
+playerblackjack = False
+
+
+print("**********WELCOME TO LEDMOV'S BLACKJACK**********")
+time.sleep(1.5)
+print("HERE ARE THE RULES AND GOALS:")
+time.sleep(1.5)
+print("YOUR JOB IS TO GET TO 21")
+time.sleep(1.5)
+print("IF YOU GO ABOVE YOU LOSE")
+time.sleep(1.5)
+print("BECAUSE CODING IS HARD AND I'M LAZY YOU HAVE NO CHOICE IF ACES ARE HIGH OR LOW, THEY WILL ALWAYS BE HIGH :)")
+time.sleep(2)
+
+dealer1 = random.randint(2, 11)
+dealer2 = random.randint(2, 11)
+dealer3 = random.randint(2, 11)
+dealer4 = random.randint(2, 11)
+dealer5 = random.randint(2, 11)
+player1 = random.randint(2, 11)
+player2 = random.randint(2, 11)
+player3 = random.randint(2, 11)
+player4 = random.randint(2, 11)
+player5 = random.randint(2, 11)
+player6 = random.randint(2, 11)
+player7 = random.randint(2, 11)
+player8 = random.randint(2, 11)
+player9 = random.randint(2, 11)
+
+total = player1 + player2
+
+dealertotal = dealer1 + dealer2
+
+print(f"Your cards are: a {player1} and a {player2}")
+time.sleep(1)
+print(f"Your card total is: {total}")
+time.sleep(1)
+print(f"The dealer's visible card is: a {dealer1}")
+time.sleep(1)
+
+while endh == False:
+    if player1 + player2 == 21:
+        print("-------------------------------")
+        print("BLACKJACK!")
+        print("YOU WIN!")
+        print("BEING DEALT A BLACKJACK FIRST ROUND IS A 4.78% CHANCE!")
+        print("MAYBE GO BUY A LOTTERY TICKET?")
+        playerblackjack = True
+        endh = True
+        time.sleep(1.5)
+        print("**********THANKS FOR PLAYING**********")
+        time.sleep(1.2)
+        print("*********SUPPORT ME ON TWITER*********")
+        time.sleep(1.2)
+        print("***************@LEDMOV****************")
+        time.sleep(1)
+        
+    else:
+        print("-------------------------------")
+        hitorstand = str(input("Would you like to hit or stand? > "))
+        hitorstandf = hitorstand.lower()
+        if hitorstandf == 'hit':
+            H = True
+        elif hitorstandf == 'stand':
+            S = True 
+
+    while S != True:
+            if H == True:
+                print(f"you're new card is a: {player3}")
+                total = total + player3
+                print(f"Your new total is: {total}")
+                time.sleep(1)
+                if total > 21:
+                    print("-------------------------------")
+                    print("You went Bust!")
+                    print("You lose!")
+                    print("Better luck next time!")
+                    endh = True
+                    break
+                else:
+                    print("-------------------------------")
+                    hitorstandfs = str(input("Would you like to hit again or stand? > "))
+                    hitorstandff = hitorstandfs.lower()
+                    if hitorstandff == 'hit':
+                        H = True
+                    elif hitorstandff == 'stand':
+                        S = True 
+                        break
+    while fu == False:
+        print("-------------------------------")
+        print(f"The dealer flips the card to reveal: {dealer2}")
+        print(f"You're total is: {total} and the dealer's total is: {dealertotal} ")
+        time.sleep(2)
+        fu == True
+        break
+
+    while S == True:
+        if dealertotal <= 15:
+            print("-------------------------------")
+            print(f"The Dealer reveals another card: {dealer3}")
+            dealertotal = dealertotal + dealer3
+            print(f"Dealer's total is now: {dealertotal}")
+            time.sleep(2)       
+        elif dealertotal < 17:
+                    print("-------------------------------")
+                    print(f"Dealer draws another card: {dealer4}")
+                    dealertotal = dealertotal + dealer4
+                    print(f"Dealer's total is now: {dealertotal}")
+                    time.sleep(2)
+                    endh = True
+        else:
+            if dealertotal > 21:
+                print("-------------------------------")
+                print("Dealer is bust!")
+                print("You win!, Well Done!")  
+                endh = True
+                break
+            elif dealertotal == total:
+                print("-------------------------------")
+                print(f"Dealer draws another card: {dealer5}")
+                dealertotal = dealertotal + dealer5
+                print(f"Dealer's total is now: {dealertotal}")  
+                time.sleep(2)
+
+            elif dealertotal > 21:
+                print("-------------------------------")
+                print("Dealer is bust!")
+                print("You Win!")
+                endh = True
+                break
+            elif dealertotal == 21:
+                print("-------------------------------")
+                print("Dealer has BLACKJACK!")
+                print("Dealer Wins!")
+                dealerblackjack = True
+                endh = True
+                break        
+            else:
+                break
+
+if dealertotal > total and dealertotal <= 21 and dealerblackjack == False:
+    print("-------------------------------")
+    print(f"Dealer has {dealertotal}!")
+    print(f"You only have {total}!")
+    print("You Lose!, Unlucky!") 
+
+elif dealertotal < total and total <= 21 and playerblackjack == False:
+    print("-------------------------------")
+    print(f"You have {total}!")
+    print(f"Dealer only has {dealertotal}!")
+    print("You Win!, Well Done!") 
+time.sleep(2)
+print("**********THANKS FOR PLAYING**********")
+time.sleep(1.5)
+print("*********SUPPORT ME ON TWITER*********")
+time.sleep(1.5)
+print("***************@LEDMOV****************")
+time.sleep(1)
+
+# Thanks for supporting me!
